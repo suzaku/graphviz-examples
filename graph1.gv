@@ -1,0 +1,34 @@
+digraph G {
+    # Set size of the graph
+    size = "4,4";
+
+    # Set shape of the "main" node
+    main [shape=box];
+
+    # Use `->` to set up edges
+    main -> parse [weight=8];
+    parse -> execute;
+
+    # Set style attributes to use a dotted edge
+    main -> init [style=dotted];
+    main -> cleanup;
+
+    # Connect to multiple nodes
+    execute -> {make_string; printf};
+    init -> make_string;
+
+    # Change default color of all edges from this line on
+    edge [color=red]; /* Using case insensitive color names */ 
+    # Setting label of edge
+    main -> printf [style=bold,label="100 times"];
+    # Setting attributes of an existing node
+    make_string [shape=record,label="a | b | c"] /* Make it a record node with fields */
+
+    # A color value can be a huesaturation-brightness triple
+    node [shape=box,style=filled,color=".7 .3 1.0"]
+    # or a RGB triple
+    execute -> compare [color="#00FF00"];
+
+    # Set the "compare" node to be a polygon
+    compare [shape=polygon,sides=5]
+}
